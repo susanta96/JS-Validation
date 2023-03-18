@@ -1,6 +1,7 @@
 
 
 export type CurrencyTypes = 'INR' | 'USD' | 'EUR';
+export type UnitTypes = "kilometer-per-hour" | "meter-per-second" | "kilometer" | "meter" | "foot";
 
 const Validator = {
     /**
@@ -15,6 +16,19 @@ const Validator = {
             currency,
             maximumFractionDigits: fractionRequired ? 2 : 0 // Remove the Fraction
           }).format(number);
+    },
+    /**
+     * @author Susanta Chakraborty
+     * @param distance is the bumber format , also expect it to be in Meter
+     * @param locale should be string (navigator.language)
+     * @returns string with passed units
+     */
+    formatDistance(distance: number, locale: string, unit: UnitTypes) {
+        return new Intl.NumberFormat(locale, {
+            style: 'unit',
+            unit,
+            unitDisplay: 'short'
+          }).format(distance);
     }
 }
 

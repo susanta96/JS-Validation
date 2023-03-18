@@ -70,6 +70,7 @@ button:focus-visible {
   display: flex;
   gap: 2ch;
   justify-content: center;
+  margin-block-end: .35rem;
 }
 
 .row span {
