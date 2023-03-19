@@ -34,6 +34,10 @@ function App() {
           <div className="col-6">Original No: <span>{num} m.</span></div>
           <div className="col-6">Formated: <span>{Validator.formatDistance(num/1000, navigator.language, 'kilometer')}</span> </div>
         </div>
+        <div className="row">
+          <div className="col-6">Original No: <span>{new Date('1996-08-23').toDateString()}</span></div>
+          <div className="col-6">Formated: <span>{Validator.getRelativeTimeString(new Date('1996-08-23'), 'en-IN')}</span> </div>
+        </div>
       </div>
     </div>
   )
