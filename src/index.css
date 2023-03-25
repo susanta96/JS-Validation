@@ -67,9 +67,10 @@ button:focus-visible {
 }
 
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2ch;
-  justify-content: center;
+  justify-items: flex-start;
   margin-block-end: .35rem;
 }
 
