@@ -31,6 +31,18 @@ const Validator = {
           }).format(distance);
     },
 
+    /**
+     * @author Susanta Chakraborty
+     * @param number is the bumber format , also expect it to be in Meter
+     * @param locale should be string (navigator.language)
+     * @returns B, M , K - Short form of Million Billion etc
+     */
+    formatCompactNumber(number: number, locale: string) {
+      return new Intl.NumberFormat(locale, {
+          notation: 'compact'
+        }).format(number);
+    },
+
     /// Date Formatting 
 
     /**

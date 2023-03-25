@@ -5,7 +5,7 @@ import './App.css'
 import Validator from './utils/utils';
 
 function App() {
-  const [num] = useState(239400);
+  const [num] = useState(23940000);
   const [num2] = useState(328782);
 
 
@@ -37,6 +37,10 @@ function App() {
         <div className="row">
           <div className="col-6">Original No: <span>{new Date('1996-08-23').toDateString()}</span></div>
           <div className="col-6">Formated: <span>{Validator.getRelativeTimeString(new Date('1996-08-23'), 'en-IN')}</span> </div>
+        </div>
+        <div className="row">
+          <div className="col-6">Original No: <span>{num}</span></div>
+          <div className="col-6">Formated: <span>{Validator.formatCompactNumber(num, navigator.language)}</span> </div>
         </div>
       </div>
     </div>
