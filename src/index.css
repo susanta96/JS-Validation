@@ -71,6 +71,7 @@ button:focus-visible {
   grid-template-columns: 1fr 1fr;
   gap: 2ch;
   justify-items: flex-start;
+  text-align: start;
   margin-block-end: .35rem;
 }
 

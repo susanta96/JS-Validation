@@ -1,3 +1,5 @@
+import { Temporal } from '@js-temporal/polyfill';
+import { intlFormat } from 'date-fns'
 
 
 export type CurrencyTypes = 'INR' | 'USD' | 'EUR';
@@ -79,6 +81,45 @@ const Validator = {
     const rtf = new Intl.RelativeTimeFormat(lang, { numeric: "auto" });
     return rtf.format(Math.floor(deltaSeconds / divisor), units[unitIndex]);
   },
+
+  formatTime(date: string): string {
+    const year = Number(date.split('-')[0]);
+    const month = Number(date.split('-')[1]);
+    const day = Number(date.split('T')[0].split('-')[2]);
+    const hour = Number(date.split('T')[1].split(':')[0]);
+    const min = Number(date.split('T')[1].split(':')[1]);
+
+    const tempDate = Temporal.ZonedDateTime.from({
+      timeZone: 'Europe/Berlin',
+      year: year,
+      month: month,
+      day: day,
+      hour: hour,
+      minute: min,
+    });
+    const formatIntl = Intl.DateTimeFormat(navigator.language, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(tempDate.toInstant().epochMilliseconds);
+    
+    return formatIntl;
+  },
+
+  formatTimeNew(timestamp: string) {
+    // Get the date and time from the input, ignoring the +0000 offset. 
+    // The timestamp actually refers to a local date/time in CET and the +0000 is fake.
+    const pdt = Temporal.PlainDateTime.from(timestamp);
+  
+    // Project this timezone-less date/time into CET
+    const zdtCET = pdt.toZonedDateTime('Europe/Berlin');
+  
+    // Convert to the user's local time zone
+    const zdtLocal = zdtCET.withTimeZone(Temporal.Now.timeZone());
+  
+    // Finally, format its hours/minutes in 24-hour time display
+    return zdtLocal.toLocaleString(navigator.language, { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
 }
 
 export default Validator;
