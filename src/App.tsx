@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Validator from './utils/utils';
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Validator from "./utils/utils";
 
 function App() {
   const [num] = useState(23940000);
@@ -22,25 +22,70 @@ function App() {
       <h1>Intl List Formats</h1>
       <div className="card">
         <div className="row">
-          <div className="col-6">Original No: <span>{num}</span></div>
-          <div className="col-6">Formated: <span>{Validator.formatCurrency(num, 'en-IN', 'INR')}</span> </div>
+          <div className="col-6">
+            Original No: <span>{num}</span>
+          </div>
+          <div className="col-6">
+            Formated:{" "}
+            <span>{Validator.formatCurrency(num, "en-IN", "INR")}</span>{" "}
+          </div>
         </div>
         <div className="row">
-          <div className="col-6">Original No: <span>{num2}</span></div>
-          <div className="col-6">Formated: <span>{Validator.formatCurrency(num2, navigator.language, 'EUR', true)}</span> </div>
+          <div className="col-6">
+            Original No: <span>{num2}</span>
+          </div>
+          <div className="col-6">
+            Formated:{" "}
+            <span>
+              {Validator.formatCurrency(num2, navigator.language, "EUR", true)}
+            </span>{" "}
+          </div>
         </div>
         <hr />
         <div className="row">
-          <div className="col-6">Original No: <span>{num} m.</span></div>
-          <div className="col-6">Formated: <span>{Validator.formatDistance(num/1000, navigator.language, 'kilometer')}</span> </div>
+          <div className="col-6">
+            Original No: <span>{num} m.</span>
+          </div>
+          <div className="col-6">
+            Formated:{" "}
+            <span>
+              {Validator.formatDistance(
+                num / 1000,
+                navigator.language,
+                "kilometer"
+              )}
+            </span>{" "}
+          </div>
         </div>
         <div className="row">
-          <div className="col-6">Original No: <span>{new Date('1996-08-23').toDateString()}</span></div>
-          <div className="col-6">Formated: <span>{Validator.getRelativeTimeString(new Date('1996-08-23'), 'en-IN')}</span> </div>
+          <div className="col-6">
+            Original No: <span>{new Date("1996-08-23").toDateString()}</span>
+          </div>
+          <div className="col-6">
+            Formated:{" "}
+            <span>
+              {Validator.getRelativeTimeString(new Date("1996-08-23"), "en-IN")}
+            </span>{" "}
+          </div>
         </div>
         <div className="row">
-          <div className="col-6">Original No: <span>{num}</span></div>
-          <div className="col-6">Formated: <span>{Validator.formatCompactNumber(num, navigator.language)}</span> </div>
+          <div className="col-6">
+            Original No: <span>{num}</span>
+          </div>
+          <div className="col-6">
+            Formated:{" "}
+            <span>
+              {Validator.formatCompactNumber(num, navigator.language)}
+            </span>{" "}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6">
+            Original No: <span>{date}</span>
+          </div>
+          <div className="col-6">
+            Formated: <span>{Validator.formatTimeNew(date)}</span>{" "}
+          </div>
         </div>
         <div className="row">
           <div className="col-6">Original No: <span>{date}</span></div>
@@ -48,7 +93,7 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
